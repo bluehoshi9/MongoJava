@@ -2,10 +2,6 @@ package com.mongodb;
 
 import com.mongodb.client.*;
 
-import static com.mongodb.client.model.Accumulators.*;
-import static com.mongodb.client.model.Aggregates.*;
-
-import com.mongodb.client.model.Accumulators;
 import org.bson.Document;
 
 import java.util.Arrays;
@@ -24,20 +20,20 @@ public class Aggregation {
 //        GET COLLECTION
         MongoCollection<Document> useCollection = useDB.getCollection("zips");
 
+//        AGGREGATION PIPELINE
         AggregateIterable outputPipeline = useCollection.aggregate(Arrays.asList(
-//                unwind(""),
-                match(new Document("state","TX")),
-                group("$city", Accumulators.sum("totalPop","$pop")),
-                project(new Document("_id",0)),
-                sort(new Document("totalPop",-1)),
-                limit(3)
-//                sort(new Document("zip",-1))
+//                match(new Document("state","TX")),
+//                project(new Document("_id",0).append("city",1).append("pop",1)),
+//                sort(new Document("pop",-1)),
+//                limit(10)
+//                group("$state",Accumulators.sum("cityNum",1))
+//                sort(new Document("cityNum", 1))
         ));
 
-        for (Object dbObject : outputPipeline)
-        {
+        for (Object dbObject : outputPipeline) {
             System.out.println(dbObject);
         }
 
     }
 }
+
