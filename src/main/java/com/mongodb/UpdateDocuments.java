@@ -25,11 +25,11 @@ public class UpdateDocuments {
         MongoCollection<Document> useCollection = useDB.getCollection("collectionName");
 
 //        UPDATE ONE DOCUMENT
-//        useCollection.updateOne(Filters.eq("name", "Ram"), Updates.set("age", 100));
+//        useCollection.updateOne(Filters.eq("name", "Ram"), Updates.combine(Updates.set("name","Teo"), Updates.set("age", 200), Updates.set("city", "a")));
 //        System.out.println(">Update ONE document successfully");
 
 //        UPDATE MULTIPLE DOCUMENTs
-        useCollection.updateMany(Filters.eq("name", "Ram"), Updates.set("age", 200));
+        useCollection.updateMany(Filters.eq("name", "Ram"), Updates.combine(Updates.set("name","Teo"), Updates.set("age", 200), Updates.set("city", "a")));
         System.out.println(">Update documents successfully");
     }
 }
