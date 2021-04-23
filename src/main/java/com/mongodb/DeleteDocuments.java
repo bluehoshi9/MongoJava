@@ -24,16 +24,16 @@ public class DeleteDocuments {
         MongoCollection<Document> useCollection = useDB.getCollection("collectionName");
 
 //        DELTE ONE DOCUMENT WITH FILTER
-        useCollection.deleteOne(Filters.eq("name", "Ram"));
+        useCollection.deleteOne(Filters.and(Filters.eq("name", "Teo"),Filters.eq("age", 200)));
         System.out.println(">Delete ONE document successfully");
 
 //        DELTE MULTIPLE DOCUMENTS WITH FILTER
-        DeleteResult result  = useCollection.deleteMany(Filters.eq("name", "Ram"));
-        System.out.println(">Delete documents successfully");
-        System.out.println(">The Numbers of Deleted Document(s) : " + result.getDeletedCount());
+//        DeleteResult result  = useCollection.deleteMany(Filters.eq("name", "Ram"));
+//        System.out.println(">Delete documents successfully");
+//        System.out.println(">The Numbers of Deleted Document(s) : " + result.getDeletedCount());
 
 //        DELETE ALL
-        useCollection.deleteMany(new BasicDBObject());
-        System.out.println(">Delete all documents successfully");
+//        useCollection.deleteMany(new BasicDBObject());
+//        System.out.println(">Delete all documents successfully");
     }
 }
