@@ -6,6 +6,8 @@ import org.bson.Document;
 
 import java.util.Arrays;
 
+import static com.mongodb.client.model.Aggregates.*;
+
 public class Aggregation {
     public static void main(String[] args) {
 //        CONNECTION
@@ -22,10 +24,10 @@ public class Aggregation {
 
 //        AGGREGATION PIPELINE
         AggregateIterable outputPipeline = useCollection.aggregate(Arrays.asList(
-//                match(new Document("state","TX")),
-//                project(new Document("_id",0).append("city",1).append("pop",1)),
-//                sort(new Document("pop",-1)),
-//                limit(10)
+                match(new Document("state","TX")),
+                project(new Document("_id",0).append("city",1).append("pop",1)),
+                sort(new Document("pop",-1)),
+                limit(10)
 //                group("$state",Accumulators.sum("cityNum",1))
 //                sort(new Document("cityNum", 1))
         ));
